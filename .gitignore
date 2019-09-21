@@ -1,0 +1,9 @@
+app/.vscode
+app/node_modules
+app/package-lock.json
+.webpack/renderer/main_window
+datasets/bryan/*.tar.gz
+datasets/bryan/DEF_CON/
+datasets/bryan/DEF_CON/DEF_CON_26_CTF.pcap
+datasets/bryan/DEF_CON/DEF_CON_23_ICS_Village.pcap.gz
+app/out/
