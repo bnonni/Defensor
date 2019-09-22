@@ -1,1 +1,7 @@
-https://defensor-def-con-pcaps.s3.amazonaws.com/
+**All data in these files are now located in the csv/ folder**
+https://defensor-def-con-pcaps.s3.amazonaws.com/DEF_CON_23_ICS_Village.pcap.gz
+https://defensor-def-con-pcaps.s3.amazonaws.com/ETH_DUMP_PCAP.tar.gz
+https://defensor-def-con-pcaps.s3.amazonaws.com/ICS_PCAP.tar.gz
+https://defensor-def-con-pcaps.s3.amazonaws.com/MORE_PCAP.tar.gz
+https://defensor-def-con-pcaps.s3.amazonaws.com/PCAP_CSV.tar.gz
+https://defensor-def-con-pcaps.s3.amazonaws.com/csv/
