@@ -1,0 +1,25 @@
+#!/bin/bash
+params="$(echo *.pcap | sed 's/.pcap/\'$'\n/g')"
+echo $params
+for param in $params
+do
+  tshark -r $param.pcap -T fields -e frame.number -e eth.src -e eth.dst -e ip.src -e ip.dst -e frame.len -E header=y -E separator=, > $param.csv
+done
+pcaps="$(ls -l *.pcap | wc -l)"
+csvs="$(ls -l *.csv | wc -l)"
+if [[ $pcaps -eq $csvs ]]
+then
+   echo "Execution successful."
+   echo "Converted $pcaps .pcap files into $csvs .csv files."
+elif [[ $pcaps -gt $csvs ]]
+then
+   echo "Warning: .pcaps: $pcaps > .csvs: $csvs => .pcap count > .csv count file input count."
+   echo "Check your folder for .pcaps that did not convert."
+elif [[ $pcaps -lt $csvs ]]
+then
+   echo "Warning: .pcaps: $pcaps < .csvs: $csvs => .pcap file input count is less than .csv file outpur count."
+   echo "Not sure what happened. This theoretically should be impossible."
+else
+   echo "ERROR: Check file-folder setup and retry or contact Bryan Nonni."
+fi
+exit 0
