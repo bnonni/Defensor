@@ -11,22 +11,20 @@
  *
  * https://electronjs.org/docs/tutorial/security
  *
- * To enable Node.js integration in this file, open up `main.js` and enable the `nodeIntegration`
- * flag:
- *
- * ```
- *  // Create the browser window.
- *  mainWindow = new BrowserWindow({
- *    width: 800,
- *    height: 600,
- *    webPreferences: {
- *      nodeIntegration: true
- *    }
- *  });
- * ```
  */
 
 import './index.css';
-import './stop.js'
+const sniffer = require('./modules/sniffer');
 
-console.log('👋 renderer.js loaded css & js files');
+var start = document.getElementById('start');
+var stop = document.getElementById('stop');
+
+start.onclick = () => {
+    console.log('Sniffer activated 👃🏼');
+    sniffer.start_session();
+};
+
+stop.onclick = () => {
+    console.log('Sniffer deactivated 👃🏼');
+    sniffer.stop_session();
+}

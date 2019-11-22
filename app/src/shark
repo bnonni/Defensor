@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-tshark > ./tmp/shark.pcap &
-echo $! > ./src/shark_pid.txt
-# echo 'export $TSHARK_PID=' >> ~/.bash_profile
-# findp /usr/local/bin/Wireshark.app/Contents/MacOS/tshark | echo `awk 'NR==1{print $2}'` | pbcopy; \`TSHARK_PID=pbpaste`; \echo 'export TSHARK_PID' >> ~/.bash_profile; \srcbash

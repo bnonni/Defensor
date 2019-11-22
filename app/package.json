@@ -1,106 +1,108 @@
 {
-  "name": "defensor",
-  "productName": "defensor",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": ".webpack/main",
-  "scripts": {
-    "start": "./src/shark; electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
-  "keywords": [
-    "IDS",
-    "intrusion detection system",
-    "machine learning",
-    "network security",
-    "cyber security",
-    "neural networks",
-    "logistic",
-    "regression",
-    "knn",
-    "random forest",
-    "cyber attacks",
-    "cyber threats"
-  ],
-  "author": {
-    "name": "fsociety00",
-    "email": "me@bryanwnonni.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bnonni/Defensor/issues"
-  },
-  "homepage": "https://github.com/bnonni/Defensor#readme",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "defensor"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ],
-      "plugins": [
-        [
-          "@electron-forge/plugin-webpack",
-          {
-            "mainConfig": "./webpack.main.config.js",
-            "renderer": {
-              "config": "./webpack.renderer.config.js",
-              "entryPoints": [
+    "name": "defensor",
+    "productName": "defensor",
+    "version": "1.0.0",
+    "description": "My Electron application description",
+    "main": ".webpack/main",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "echo \"No linting configured\""
+    },
+    "keywords": [
+        "IDS",
+        "intrusion detection system",
+        "machine learning",
+        "network security",
+        "cyber security",
+        "neural networks",
+        "logistic",
+        "regression",
+        "knn",
+        "random forest",
+        "cyber attacks",
+        "cyber threats"
+    ],
+    "author": {
+        "name": "fsociety00",
+        "email": "me@bryanwnonni.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/bnonni/Defensor/issues"
+    },
+    "homepage": "https://github.com/bnonni/Defensor#readme",
+    "config": {
+        "forge": {
+            "packagerConfig": {},
+            "makers": [
                 {
-                  "html": "./src/index.html",
-                  "js": "./src/renderer.js",
-                  "name": "main_window"
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "defensor"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
                 }
-              ]
-            }
-          }
-        ]
-      ]
+            ],
+            "plugins": [
+                [
+                    "@electron-forge/plugin-webpack",
+                    {
+                        "mainConfig": "./webpack.main.config.js",
+                        "renderer": {
+                            "config": "./webpack.renderer.config.js",
+                            "entryPoints": [
+                                {
+                                    "html": "./src/index.html",
+                                    "js": "./src/renderer.js",
+                                    "name": "main_window"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            ]
+        }
+    },
+    "dependencies": {
+        "child_process": "^1.0.2",
+        "cli": "^1.0.1",
+        "electron-squirrel-startup": "^1.0.0",
+        "mongoose": "^5.7.12",
+        "pcap": "./node_pcap",
+        "write": "^2.0.0"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.45",
+        "@electron-forge/maker-deb": "^6.0.0-beta.45",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.45",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.45",
+        "@electron-forge/maker-zip": "^6.0.0-beta.45",
+        "@electron-forge/plugin-webpack": "^6.0.0-beta.45",
+        "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+        "css-loader": "^3.2.0",
+        "electron": "6.0.7",
+        "electron-rebuild": "^1.8.6",
+        "mnm": "0.0.4",
+        "network-sniffer": "^0.1.0",
+        "node-loader": "^0.6.0",
+        "shelljs": "^0.8.3",
+        "style-loader": "^0.23.1",
+        "terminal-menu": "^2.1.1"
     }
-  },
-  "dependencies": {
-    "child_process": "^1.0.2",
-    "cli": "^1.0.1",
-    "electron-squirrel-startup": "^1.0.0",
-    "write": "^2.0.0"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.45",
-    "@electron-forge/maker-deb": "^6.0.0-beta.45",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.45",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.45",
-    "@electron-forge/maker-zip": "^6.0.0-beta.45",
-    "@electron-forge/plugin-webpack": "^6.0.0-beta.45",
-    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
-    "css-loader": "^3.2.0",
-    "electron": "6.0.7",
-    "electron-rebuild": "^1.8.6",
-    "mnm": "0.0.4",
-    "network-sniffer": "^0.1.0",
-    "node-loader": "^0.6.0",
-    "shelljs": "^0.8.3",
-    "style-loader": "^0.23.1",
-    "terminal-menu": "^2.1.1"
-  }
 }

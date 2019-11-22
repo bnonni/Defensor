@@ -994,55 +994,39 @@ function plural(ms, n, name) {
 /***/ (function(module, exports, __webpack_require__) {
 
 const { app, BrowserWindow } = __webpack_require__(/*! electron */ "electron");
-const { exec } = __webpack_require__(/*! child_process */ "child_process");
-
-function stop() {
-  exec('kill $TSHARK_PID', (err, stdout, stderr) => {
-    if (err) {
-      // node couldn't execute the command
-      return console.log(err);
-    }
-    // the *entire* stdout and stderr (buffered)
-    console.log(`stdout: ${stdout}`);
-    console.log(`stderr: ${stderr}`);
-  });
-}
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (__webpack_require__(/*! electron-squirrel-startup */ "./node_modules/electron-squirrel-startup/index.js")) { // eslint-disable-line global-require
-  app.quit();
-}
+if (__webpack_require__(/*! electron-squirrel-startup */ "./node_modules/electron-squirrel-startup/index.js")) app.quit(); // eslint-disable-line global-require
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 const createWindow = () => {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true,
-      // preload: "/Users/hu5ky5n0w/Desktop/GSU_Courses/Fall_2019/Security_4222/Term_Project/Defensor/app/src/stop.js", //String value should be absolute file path to a Node script you want to preload to the page before electron is compiled/run,
-      plugins: true,
-    }
-  });
+    // Create the browser window.
+    mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            plugins: true,
+        }
+    });
 
-  // and load the index.html of the app.
-  mainWindow.loadURL('http://localhost:3000/main_window');
+    // and load the index.html of the app.
+    mainWindow.loadURL('http://localhost:3000/main_window');
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+    // Open the DevTools.
+    // mainWindow.webContents.openDevTools();
 
-  // Emitted when the window is closed.
-  mainWindow.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    stop();
-    mainWindow = null;
-  });
+    // Emitted when the window is closed.
+    mainWindow.on('closed', () => {
+        // Dereference the window object, usually you would store windows
+        // in an array if your app supports multi windows, this is the time
+        // when you should delete the corresponding element.
+        mainWindow = null;
+    });
 };
 
 // This method will be called when Electron has finished
@@ -1052,19 +1036,15 @@ app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+    // On OS X it is common for applications and their menu bar
+    // to stay active until the user quits explicitly with Cmd + Q
+    if (process.platform !== 'darwin') app.quit();
 });
 
 app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
-    createWindow();
-  }
+    // On OS X it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (mainWindow === null) createWindow();
 });
 
 // In this file you can include the rest of your app's specific main process
